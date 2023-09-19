@@ -1,0 +1,10 @@
+<odoo>
+  <record id="customer_installment_action" model="ir.actions.act_window">
+    <field name="name">Customer Installment</field>
+    <field name="res_model">installment.installment</field>
+    <field name="view_mode">tree,form,kanban,pivot</field>
+    <field name="context">{'search_default_open':1,'search_default_customer': 1}</field>
+  </record>
+  <menuitem id="installment_menu" name="Installments" />
+  <menuitem id="customer_installment_sub_menu" name="Customer Installment" action="customer_installment_action" parent="installment_menu" />
+</odoo>

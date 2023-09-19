@@ -1,0 +1,321 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* installment
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-18 15:43+0000\n"
+"PO-Revision-Date: 2023-09-18 15:43+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: installment
+#: model_terms:ir.ui.view,arch_db:installment.installment_view_kanban
+msgid "<i class=\"fa fa-clock-o mx-2\" aria-label=\"Date\" role=\"img\" title=\"Date\"/>"
+msgstr "غير مترجم"
+#. module: installment
+#: model_terms:ir.ui.view,arch_db:installment.installment_view_form
+msgid ""
+"<span class=\"o_stat_value\"/>\n"
+"                                <span class=\"o_stat_text\">Invoice</span>"
+msgstr "غير مترجم"
+#. module: installment
+#. odoo-python
+#: code:addons/installment/models/installment_model.py:0
+#: model:ir.model.fields,field_description:installment.field_installment_installment__account_id
+#, python-format
+msgid "Account"
+msgstr "الحساب"
+#. module: installment
+#. odoo-python
+#: code:addons/installment/models/installment_model.py:0
+#: model:ir.model.fields,field_description:installment.field_installment_installment__active
+#, python-format
+msgid "Active"
+msgstr "نشط"
+#. module: installment
+#. odoo-python
+#: code:addons/installment/models/installment_model.py:0
+#: code:addons/installment/models/payment_model.py:0
+#: model:ir.model.fields,field_description:installment.field_installment_installment__amount
+#: model:ir.model.fields,field_description:installment.field_installment_payment__amount
+#: model:ir.model.fields,field_description:installment.field_installment_payment_wizard__amount
+#, python-format
+msgid "Amount"
+msgstr "المبلغ"
+#. module: installment
+#. odoo-python
+#: code:addons/installment/models/installment_model.py:0
+#: model:ir.model.fields,field_description:installment.field_installment_installment__analytic_account_id
+#, python-format
+msgid "Analytic Account"
+msgstr "الحساب التحليلي"
+#. module: installment
+#. odoo-python
+#: code:addons/installment/models/installment_model.py:0
+#: model:ir.model.fields,field_description:installment.field_installment_installment__analytic_tags_ids
+#, python-format
+msgid "Analytic Tags"
+msgstr "العلامات التحليلية"
+#. module: installment
+#: model_terms:ir.ui.view,arch_db:installment.installment_view_form
+#: model_terms:ir.ui.view,arch_db:installment.installment_view_search
+msgid "Archived"
+msgstr "مؤرشف"
+#. module: installment
+#. odoo-python
+#: code:addons/installment/models/payment_model.py:0
+#, python-format
+msgid "Can't Add Payments to draft installments"
+msgstr "لا يمكن إضافة دفعات إلى قسط في حاله مسوده"
+#. module: installment
+#: model_terms:ir.ui.view,arch_db:installment.register_payment_view_form
+msgid "Close"
+msgstr "اغلاق"
+#. module: installment
+#: model_terms:ir.ui.view,arch_db:installment.register_payment_view_form
+msgid "Confirm"
+msgstr "تأكيد"
+#. module: installment
+#: model_terms:ir.ui.view,arch_db:installment.installment_view_search
+msgid "Created By"
+msgstr "انشأ من قبل"
+#. module: installment
+#: model:ir.model.fields,field_description:installment.field_installment_installment__create_uid
+#: model:ir.model.fields,field_description:installment.field_installment_payment__create_uid
+#: model:ir.model.fields,field_description:installment.field_installment_payment_wizard__create_uid
+msgid "Created by"
+msgstr "انشأ من قبل"
+#. module: installment
+#: model:ir.model.fields,field_description:installment.field_installment_installment__create_date
+#: model:ir.model.fields,field_description:installment.field_installment_payment__create_date
+#: model:ir.model.fields,field_description:installment.field_installment_payment_wizard__create_date
+msgid "Created on"
+msgstr "تم إنشاؤها في"
+#. module: installment
+#. odoo-python
+#: code:addons/installment/models/installment_model.py:0
+#: model:ir.model.fields,field_description:installment.field_installment_installment__customer_id
+#: model_terms:ir.ui.view,arch_db:installment.installment_view_search
+#, python-format
+msgid "Customer"
+msgstr "عميل"
+#. module: installment
+#: model:ir.actions.act_window,name:installment.customer_installment_action
+#: model:ir.ui.menu,name:installment.customer_installment_sub_menu
+msgid "Customer Installment"
+msgstr "تقسيط العميل"
+#. module: installment
+#. odoo-python
+#: code:addons/installment/models/installment_model.py:0
+#: model:ir.model.fields,field_description:installment.field_installment_installment__date
+#, python-format
+msgid "Date"
+msgstr "التاريخ"
+#. module: installment
+#: model:ir.model.fields,field_description:installment.field_installment_installment__display_name
+#: model:ir.model.fields,field_description:installment.field_installment_payment__display_name
+#: model:ir.model.fields,field_description:installment.field_installment_payment_wizard__display_name
+msgid "Display Name"
+msgstr "اسم العرض"
+#. module: installment
+#. odoo-python
+#: code:addons/installment/models/installment_model.py:0
+#: model:ir.model.fields.selection,name:installment.selection__installment_installment__state__draft
+#: model_terms:ir.ui.view,arch_db:installment.installment_view_search
+#, python-format
+msgid "Draft"
+msgstr "مسودة"
+#. module: installment
+#: model_terms:ir.ui.view,arch_db:installment.installment_view_search
+msgid "Group By"
+msgstr "المجموعة حسب"
+#. module: installment
+#: model:ir.model.fields,field_description:installment.field_installment_installment__id
+#: model:ir.model.fields,field_description:installment.field_installment_payment__id
+#: model:ir.model.fields,field_description:installment.field_installment_payment_wizard__id
+msgid "ID"
+msgstr "بطاقة تعريف"
+#. module: installment
+#. odoo-python
+#: code:addons/installment/models/payment_model.py:0
+#: model:ir.model.fields,field_description:installment.field_installment_payment__installment_id
+#: model:ir.model.fields,field_description:installment.field_installment_payment_wizard__installment_id
+#: model_terms:ir.ui.view,arch_db:installment.installment_view_tree
+#, python-format
+msgid "Installment"
+msgstr "تقسيط"
+#. module: installment
+#: model:res.groups,name:installment.installment_group_manager
+msgid "Installment Manager"
+msgstr "مدير الأقساط"
+#. module: installment
+#: model:ir.model,name:installment.model_installment_payment
+msgid "Installment Payments"
+msgstr "الأقساط"
+#. module: installment
+#: model:res.groups,name:installment.installment_group_user
+msgid "Installment User"
+msgstr "مستخدم التقسيط"
+#. module: installment
+#: model:ir.ui.menu,name:installment.installment_menu
+msgid "Installments"
+msgstr "الاقساط"
+#. module: installment
+#. odoo-python
+#: code:addons/installment/models/installment_model.py:0
+#: model:ir.model.fields,field_description:installment.field_installment_installment__journal_id
+#, python-format
+msgid "Journal"
+msgstr "دفتر اليومية"
+#. module: installment
+#: model:ir.model.fields,field_description:installment.field_installment_installment____last_update
+#: model:ir.model.fields,field_description:installment.field_installment_payment____last_update
+#: model:ir.model.fields,field_description:installment.field_installment_payment_wizard____last_update
+msgid "Last Modified on"
+msgstr "تاريخ آخر تعديل"
+#. module: installment
+#: model:ir.model.fields,field_description:installment.field_installment_installment__write_uid
+#: model:ir.model.fields,field_description:installment.field_installment_payment__write_uid
+#: model:ir.model.fields,field_description:installment.field_installment_payment_wizard__write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+#. module: installment
+#: model:ir.model.fields,field_description:installment.field_installment_installment__write_date
+#: model:ir.model.fields,field_description:installment.field_installment_payment__write_date
+#: model:ir.model.fields,field_description:installment.field_installment_payment_wizard__write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث بتاريخ"
+#. module: installment
+#. odoo-python
+#: code:addons/installment/models/installment_model.py:0
+#: model:ir.model.fields,field_description:installment.field_installment_installment__name
+#, python-format
+msgid "Name"
+msgstr "الاسم"
+#. module: installment
+#. odoo-python
+#: code:addons/installment/models/installment_model.py:0
+#, python-format
+msgid "New"
+msgstr "جديد"
+#. module: installment
+#. odoo-python
+#: code:addons/installment/models/installment_model.py:0
+#: model:ir.model.fields,field_description:installment.field_installment_installment__notes
+#, python-format
+msgid "Notes"
+msgstr "ملحوظات"
+#. module: installment
+#. odoo-python
+#: code:addons/installment/models/installment_model.py:0
+#: model:ir.model.fields.selection,name:installment.selection__installment_installment__state__open
+#: model_terms:ir.ui.view,arch_db:installment.installment_view_form
+#: model_terms:ir.ui.view,arch_db:installment.installment_view_search
+#, python-format
+msgid "Open"
+msgstr "مفتوح"
+#. module: installment
+#. odoo-python
+#: code:addons/installment/models/installment_model.py:0
+#: model:ir.model.fields.selection,name:installment.selection__installment_installment__state__paid
+#: model_terms:ir.ui.view,arch_db:installment.installment_view_search
+#, python-format
+msgid "Paid"
+msgstr "مدفوع"
+#. module: installment
+#. odoo-python
+#: code:addons/installment/models/payment_model.py:0
+#: model:ir.model.fields,field_description:installment.field_installment_payment__payment_date
+#: model:ir.model.fields,field_description:installment.field_installment_payment_wizard__payment_date
+#, python-format
+msgid "Payment Date"
+msgstr "تاريخ الدفع"
+#. module: installment
+#. odoo-python
+#: code:addons/installment/models/payment_model.py:0
+#, python-format
+msgid "Payment amount is more than remaining amount"
+msgstr "المبلغ المدفوع أكثر من المبلغ المتبقي"
+#. module: installment
+#. odoo-python
+#: code:addons/installment/models/installment_model.py:0
+#: model:ir.model.fields,field_description:installment.field_installment_installment__payment_ids
+#: model_terms:ir.ui.view,arch_db:installment.installment_view_form
+#, python-format
+msgid "Payments"
+msgstr "المدفوعات"
+#. module: installment
+#. odoo-python
+#: code:addons/installment/models/installment_model.py:0
+#: model:ir.model.fields,field_description:installment.field_installment_installment__reference
+#, python-format
+msgid "Reference"
+msgstr "مرجع"
+#. module: installment
+#: model:ir.model,name:installment.model_installment_payment_wizard
+msgid "Register Installment Payment"
+msgstr "تسجيل دفع القسط"
+#. module: installment
+#. odoo-python
+#: code:addons/installment/models/installment_model.py:0
+#: model_terms:ir.ui.view,arch_db:installment.installment_view_form
+#, python-format
+msgid "Register Payment"
+msgstr "تسجيل الدفع"
+#. module: installment
+#. odoo-python
+#: code:addons/installment/models/installment_model.py:0
+#: model:ir.model.fields,field_description:installment.field_installment_installment__remaining_amount
+#, python-format
+msgid "Remaining Amount"
+msgstr "الكمية المتبقية"
+#. module: installment
+#: model_terms:ir.ui.view,arch_db:installment.installment_view_form
+msgid "Settlement Payment"
+msgstr "دفع التسوية"
+#. module: installment
+#. odoo-python
+#: code:addons/installment/models/installment_model.py:0
+#: model:ir.model.fields,field_description:installment.field_installment_installment__state
+#: model_terms:ir.ui.view,arch_db:installment.installment_view_search
+#, python-format
+msgid "State"
+msgstr "الحالة"
+#. module: installment
+#. odoo-python
+#: code:addons/installment/models/installment_model.py:0
+#: code:addons/installment/models/payment_model.py:0
+#, python-format
+msgid "The amount must be positive number"
+msgstr "يجب أن يكون المبلغ رقمًا موجبًا"
+#. module: installment
+#: model_terms:ir.ui.view,arch_db:installment.installment_view_form
+msgid "installment form"
+msgstr "نموذج القسط"
+#. module: installment
+#: model:ir.model,name:installment.model_installment_installment
+msgid "installment manager"
+msgstr "مدير الأقساط"
+#. module: installment
+#: model_terms:ir.ui.view,arch_db:installment.register_payment_view_form
+msgid "installment payment"
+msgstr "دفع القسط"
+#. module: installment
+#: model_terms:ir.ui.view,arch_db:installment.installment_view_search
+msgid "installment search"
+msgstr "بحث بالتقسيط"
+#. module: installment
+#: model_terms:ir.ui.view,arch_db:installment.installment_view_form
+msgid "invoice"
+msgstr "فاتورة"
+#. module: installment
+#: model_terms:ir.ui.view,arch_db:installment.installment_view_form
+msgid "payments"
+msgstr "المدفوعات"

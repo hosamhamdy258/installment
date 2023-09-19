@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_installment,access_installment,model_installment_installment,installment_group_user,1,1,1,1
+access_installment_manager,access_installment_manager,model_installment_installment,installment_group_manager,1,1,1,1
+access_installment_payment,access_installment_payment,model_installment_payment,base.group_user,1,1,1,1
+access_installment_payment_wizard,access_installment_payment_wizard,model_installment_payment_wizard,base.group_user,1,0,1,0

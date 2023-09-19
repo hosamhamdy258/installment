@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="installment_view_kanban" model="ir.ui.view">
+        <field name="name">installment.view.kanban</field>
+        <field name="model">installment.installment</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile" sample="1" js_class="account_documents_kanban">
+                <field name="name" />
+                <field name="reference" />
+                <field name="state" />
+                <field name="date" />
+                <field name="customer_id" />
+                <field name="amount" />
+                <field name="notes" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="row mb4">
+                                <div class="col-6 o_kanban_record_headings">
+                                    <strong>
+                                        <span>
+                                            <field name="customer_id" attrs="{'invisible': [('customer_id', '=', False)]}"/>
+                                        </span>
+                                    </strong>
+                                </div>
+                                <div class="col-6 text-end">
+                                    <strong>
+                                        <i class="fa fa-clock-o mx-2" aria-label="Date" role="img" title="Date"/>
+                                        <field name="date" widget="date"/>
+                                    </strong>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-12">
+                                    <span>
+                                        <field name="reference"/>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <span>
+                                        <field name="amount"/>
+                                    </span>
+                                </div>
+                                <div class="col-6">
+                                    <span class="float-end">
+                                        <field name="state" widget="label_selection" options="{'classes': {'draft': 'default','open':'info', 'paid': 'success'}}"/>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+</odoo>

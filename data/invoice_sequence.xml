@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="seq_customer_invoice" model="ir.sequence">
+            <field name="name">customer invoice</field>
+            <field name="code">installment.installment</field>
+            <field name="prefix">INV/</field>
+            <field name="padding">6</field>
+        </record>
+
+    </data>
+</odoo>

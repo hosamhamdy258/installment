@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="installment_group_user" model="res.groups">
+            <field name="name">Installment User</field>
+            <field name="category_id" ref="base.module_category_services_installment"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+        <record id="installment_group_manager" model="res.groups">
+            <field name="name">Installment Manager</field>
+            <field name="category_id" ref="base.module_category_services_installment"/>
+            <field name="implied_ids" eval="[(4, ref('installment_group_user'))]"/>
+            <field name="users" eval="[(4, ref('base.user_root')),(4, ref('base.user_admin'))]"/>
+        </record>
+    </data>
+    <data >
+        <record id="installment_self_created_record_rule" model="ir.rule">
+            <field name="name">self Created Insallments</field>
+            <field name="model_id" ref="model_installment_installment"/>
+            <field name="domain_force">[('create_uid','=',user.id)]</field>
+            <field name="groups" eval="[(4, ref('installment.installment_group_user'))]"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <record id="installment_write_delete_record_rule" model="ir.rule">
+            <field name="name">write-delete draft only</field>
+            <field name="model_id" ref="model_installment_installment"/>
+            <field name="domain_force">[('state','=','draft')]</field>
+            <field name="groups" eval="[(4, ref('installment.installment_group_user')),(4, ref('installment.installment_group_manager'))]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_create" eval="False"/>
+        </record>
+        <record id="installment_all_created_record_rule" model="ir.rule">
+            <field name="name">All Created Insallments</field>
+            <field name="model_id" ref="model_installment_installment"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+            <field name="groups" eval="[(4, ref('installment.installment_group_manager'))]"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+    </data>
+</odoo>

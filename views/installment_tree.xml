@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="installment_view_tree" model="ir.ui.view">
+        <field name="name">installment.view.tree</field>
+        <field name="model">installment.installment</field>
+        <field name="arch" type="xml">
+            <tree string="Installment">
+                <field name="name" />
+                <field name="reference" />
+                <field name="state" widget="badge" decoration-warning="state == 'draft'" decoration-info="state == 'open'" decoration-success="state == 'paid'" />
+                <field name="date" />
+                <field name="customer_id" />
+                <field name="amount" />
+                <field name="remaining_amount" />
+                <field name="create_uid" />
+            </tree>
+        </field>
+    </record>
+</odoo>

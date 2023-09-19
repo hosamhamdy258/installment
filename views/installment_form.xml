@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="installment_view_form" model="ir.ui.view">
+        <field name="name">installment.view.form</field>
+        <field name="model">installment.installment</field>
+        <field name="arch" type="xml">
+            <form string="installment form">
+                <header>
+                    <button name="open" string="Open" class="oe_highlight o_form_button_save" type="object" attrs="{'invisible': ['|', ('state', '!=', 'draft'), ('active', '=', False)]}" data-hotkey="o"/>
+                    <button name="payment" string="Register Payment" class="oe_highlight" type="object" attrs="{'invisible': ['|', ('state', '!=', 'open'), ('active', '=', False)]}" data-hotkey="m"/>
+                    <button name="settlement" string="Settlement Payment" class="oe_highlight" type="object" attrs="{'invisible': ['|', ('state', '!=', 'open'), ('active', '=', False)]}" data-hotkey="s"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,open,paid"/>
+                </header>
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+                    <div name="button_box" position="inside">
+                        <button string="invoice" type="object" class="oe_stat_button" icon="fa-pencil-square-o" name="invoice" groups="installment.installment_group_manager" data-hotkey="i">
+                            <div class="o_form_field o_stat_info">
+                                <span class="o_stat_value"></span>
+                                <span class="o_stat_text">Invoice</span>
+                            </div>
+                        </button>
+                    </div>
+                    <group>
+                        <field name="name" />
+                        <field name="reference" />
+                        <field name="state" invisible="1"/>
+                        <field name="active" invisible="1"/>
+                        <field name="date" />
+                        <field name="customer_id" />
+                        <field name="journal_id" />
+                        <field name="account_id" />
+                        <field name="analytic_account_id" />
+                        <field name="analytic_tags_ids" />
+                        <field name="amount" />
+                        <field name="remaining_amount" />
+                        <field name="notes" />
+                    </group>
+                    <notebook>
+                        <page name="payments" string="Payments">
+                            <field name="payment_ids" widget="one2many">
+                                <tree string="payments" create="false" delete="false">
+                                    <field name="payment_date" />
+                                    <field name="amount" />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,51 @@
+<i class=\
+untranslated
+Account
+Active
+Amount
+Analytic Account
+Analytic Tags
+Archived
+Can't Add Payments to draft installments
+Close
+Confirm
+Created By
+Created by
+Created on
+Customer
+Customer Installment
+Date
+Display Name
+Draft
+Group By
+ID
+Installment
+Installment Manager
+Installment Payments
+Installment User
+Installments
+Journal
+Last Modified on
+Last Updated by
+Last Updated on
+Name
+New
+Notes
+Open
+Paid
+Payment Date
+Payment amount is more than remaining amount
+Payments
+Reference
+Register Installment Payment
+Register Payment
+Remaining Amount
+Settlement Payment
+State
+The amount must be positive number
+installment form
+installment manager
+installment payment
+installment search
+invoice
+payments
