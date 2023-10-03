@@ -1,51 +1,48 @@
-غير مترجم
-غير مترجم
-الحساب
-نشط
-المبلغ
-الحساب التحليلي
-العلامات التحليلية
-مؤرشف
-لا يمكن إضافة دفعات إلى قسط في حاله مسوده
-اغلاق
-تأكيد
-انشأ من قبل
-انشأ من قبل
-تم إنشاؤها في
-عميل
-تقسيط العميل
-التاريخ
-اسم العرض
-مسودة
-المجموعة حسب
-بطاقة تعريف
-تقسيط
-مدير الأقساط
-الأقساط
-مستخدم التقسيط
-الاقساط
-دفتر اليومية
-تاريخ آخر تعديل
-آخر تحديث بواسطة
-آخر تحديث بتاريخ
-الاسم
-جديد
-ملحوظات
-مفتوح
-مدفوع
-تاريخ الدفع
-المبلغ المدفوع أكثر من المبلغ المتبقي
-المدفوعات
-مرجع
-تسجيل دفع القسط
-تسجيل الدفع
-الكمية المتبقية
-دفع التسوية
-الحالة
-يجب أن يكون المبلغ رقمًا موجبًا
-نموذج القسط
-مدير الأقساط
-دفع القسط
-بحث بالتقسيط
-فاتورة
-المدفوعات
+<i class=\,غير مترجم
+untranslated,غير مترجم
+Account,الحساب
+Account Moves,حركات الحساب
+Active,نشط
+Amount,المبلغ
+Analytic Account,الحساب التحليلي
+Analytic Tags,العلامات التحليلية
+Archived,مؤرشف
+Created By,انشأ من قبل
+Created by,انشأ من قبل
+Created on,تم إنشاؤها في
+Customer,عميل
+Customer Installment,تقسيط العميل
+Date,التاريخ
+Display Name,اسم العرض
+Draft,مسودة
+Group By,المجموعة حسب
+ID,بطاقة تعريف
+Installment,تقسيط
+Installment Manager,مدير الأقساط
+Installment User,مستخدم التقسيط
+Installments,الاقساط
+Journal,دفتر اليومية
+Journal Entry,قيد اليومية
+Journal Item,عنصر اليومية
+Last Modified on,تاريخ آخر تعديل
+Last Updated by,آخر تحديث بواسطة
+Last Updated on,آخر تحديث بتاريخ
+Name,الاسم
+New,جديد
+Notes,ملحوظات
+Open,مفتوح
+Paid,مدفوع
+Payment Status,حالة الدفع
+Payments,المدفوعات
+Reference,مرجع
+Register Payment,تسجيل الدفع
+Remaining Amount,الكمية المتبقية
+Settlement Payment,دفع التسوية
+State,الحالة
+The amount must be positive number,يجب أن يكون المبلغ رقمًا موجبًا
+installment,القسط
+installment form,نموذج القسط
+installment manager,مدير الأقساط
+installment search,بحث بالتقسيط
+installment.installment,القسط
+invoice,فاتورة
