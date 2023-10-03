@@ -5,8 +5,8 @@ from odoo.exceptions import ValidationError
 
 
 class installment(models.Model):
-    _name = "installment.installment"
-    _description = "installment manager"
+    _name = _("installment.installment")
+    _description = _("installment manager")
 
     name = fields.Char(
         string=_("Name"), readonly=True, copy=False, default=lambda self: _("New")
@@ -21,9 +21,6 @@ class installment(models.Model):
 
     date = fields.Date(string=_("Date"), default=fields.Date.today())
 
-    customer_id = fields.Many2one("res.partner", string=_("Customer"), required=True)
-    journal_id = fields.Many2one("account.journal", string=_("Journal"), required=True)
-    account_id = fields.Many2one("account.account", string=_("Account"), required=True)
     analytic_account_id = fields.Many2one(
         "account.analytic.account", string=_("Analytic Account")
     )
@@ -35,35 +32,55 @@ class installment(models.Model):
     notes = fields.Text(string=_("Notes"))
     active = fields.Boolean(string=_("Active"), default=True)
 
-    payment_ids = fields.One2many(
-        "installment.payment", "installment_id", string=_("Payments")
+    customer_id = fields.Many2one("res.partner", string=_("Customer"), required=True)
+    journal_id = fields.Many2one("account.journal", string=_("Journal"), required=True)
+    account_id = fields.Many2one("account.account", string=_("Account"), required=True)
+
+    account_move_id = fields.One2many(
+        "account.move", "installment_id", string=_("Account Moves")
     )
+
+    payment_state = fields.Selection(
+        selection=lambda self: self.env["account.move"]
+        ._fields["payment_state"]
+        .selection,
+        string=_("Payment Status"),
+        store=True,
+        readonly=True,
+        copy=False,
+        compute="_compute_payment_state",
+    )
+    payments = fields.Binary(
+        compute="_compute_payments",
+        exportable=False,
+        string=_("Payments"),
+    )
+
     remaining_amount = fields.Float(
         string=_("Remaining Amount"),
-        digits=(10, 2),
-        compute="_compute_remaining_amount",
+        compute="_compute_amount",
         store=True,
-        search=True,
+        digits=(10, 2),
     )
 
-    @api.depends("amount", "payment_ids", "state")
-    def _compute_remaining_amount(self):
-        for rec in self:
-            if rec.state in ["open", "paid"]:
-                rec.remaining_amount = rec.amount - sum(
-                    [p.amount for p in rec.payment_ids]
-                )
-                rec._onchange_state()
-            else:
-                rec.remaining_amount = 0
+    @api.depends("account_move_id.amount_residual")
+    def _compute_amount(self):
+        for invoice in self:
+            invoice.remaining_amount = invoice.account_move_id.amount_residual
 
-    def _onchange_state(self):
-        for rec in self:
-            if rec.state != "draft":
-                if rec.remaining_amount == 0 and len(rec.payment_ids) != 0:
-                    rec.state = "paid"
-                else:
-                    rec.state = "open"
+    @api.depends("account_move_id.invoice_payments_widget")
+    def _compute_payments(self):
+        for invoice in self:
+            invoice.payments = invoice.account_move_id.invoice_payments_widget
+
+    @api.depends("account_move_id.payment_state")
+    def _compute_payment_state(self):
+        for invoice in self:
+            invoice.payment_state = invoice.account_move_id.payment_state or "not_paid"
+            if invoice.payment_state == "paid":
+                invoice.state = "paid"
+            elif invoice.payment_state == "partial":
+                invoice.state = "open"
 
     @api.constrains("amount")
     def positive_amount(self):
@@ -71,32 +88,115 @@ class installment(models.Model):
             raise ValidationError(_("The amount must be positive number"))
 
     def open(self):
-        self["name"] = self.env["ir.sequence"].next_by_code("installment.installment")
-        self.state = "open"
-        return True
+        for invoice in self:
+            if invoice.state == "draft":
+                move = self.env["account.move"].create(
+                    {
+                        "partner_id": invoice.customer_id.id,
+                        "journal_id": invoice.journal_id.id,
+                        "ref": invoice.reference,
+                        "installment_id": invoice.id,
+                        "invoice_date": invoice.date,
+                        "move_type": "out_invoice",
+                        "invoice_line_ids": [
+                            (
+                                0,
+                                0,
+                                {
+                                    "name": "Installment Invoice",
+                                    "account_id": invoice.account_id.id,
+                                    "quantity": 1,
+                                    "price_unit": invoice.amount,
+                                    "tax_ids": [],
+                                },
+                            )
+                        ],
+                    }
+                )
 
-    def payment(self):
-        return {
-            "name": _("Register Payment"),
-            "res_model": "installment.payment.wizard",
-            "view_mode": "form",
-            "target": "new",
-            "type": "ir.actions.act_window",
-            "context": {
-                "default_installment_id": self.ids[0],
-                "default_amount": self.remaining_amount,
-            },
-        }
+                invoice.account_move_id.action_post()
+                invoice.name = move.name
+                invoice.state = "open"
 
     def settlement(self):
-        self.env["installment.payment"].create(
-            {
-                "installment_id": self.ids[0],
-                "payment_date": self.date,
-                "amount": self.remaining_amount,
-            }
-        )
-        return True
+        for invoice in self:
+            if invoice.state == "open":
+                remaining_amount = invoice.remaining_amount
+
+                move_vals = {
+                    "partner_id": invoice.customer_id.id,
+                    "journal_id": invoice.journal_id.id,
+                    "ref": "Settlement for " + invoice.name,
+                    "line_ids": [
+                        (
+                            0,
+                            0,
+                            {
+                                "name": "Settlement for " + invoice.name,
+                                "account_id": invoice.account_id.id,
+                                "debit": remaining_amount,
+                                "credit": 0.0,
+                            },
+                        ),
+                        (
+                            0,
+                            0,
+                            {
+                                "name": "Settlement for " + invoice.name,
+                                "account_id": 6,  # ReceivableAccount
+                                "debit": 0.0,
+                                "credit": remaining_amount,
+                            },
+                        ),
+                    ],
+                }
+
+                move = self.env["account.move"].create(move_vals)
+                move.action_post()
+
+                invoice_lines = invoice.account_move_id.line_ids
+                settlement_lines = move.line_ids
+                for invoice_line in invoice_lines:
+                    for settlement_line in settlement_lines:
+                        if invoice_line.account_id == settlement_line.account_id:
+                            invoice.account_move_id.js_assign_outstanding_line(
+                                settlement_line.id
+                            )
 
     def invoice(self):
+        for invoice in self:
+            return invoice.customer_id.action_view_partner_invoices()
+
+    def payment(self):
+        for invoice in self:
+            return {
+                "name": _("Register Payment"),
+                "res_model": "account.payment.register",
+                "view_mode": "form",
+                "context": {
+                    "active_model": "account.move",
+                    "active_ids": invoice.account_move_id.ids,
+                    "dont_redirect_to_payments": True,
+                },
+                "target": "new",
+                "type": "ir.actions.act_window",
+            }
         return True
+
+
+class AccountMove(models.Model):
+    _inherit = "account.move"
+
+    installment_id = fields.Many2one(
+        "installment.installment",
+        string=_("installment"),
+        ondelete="restrict",
+        copy=False,
+        readonly=True,
+    )
+
+
+class AccountMoveLine(models.Model):
+    _inherit = "account.move.line"
+
+    installment_id = fields.Many2one("installment.installment", string=_("installment"))
