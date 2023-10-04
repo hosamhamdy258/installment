@@ -1,87 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <data>
-    <record id="demo_user" model="res.users">
-      <field name="name">Demo User</field>
-      <field name="login">demouser</field>
-      <field name="password">demo123</field>
-      <field name="active" eval="True"/>
-      <field name="email">demo@example.com</field>
-      <field name="company_id" ref="base.main_company"/>
-      <field name="groups_id" eval="[(4, ref('base.group_user')),(4, ref('installment.installment_group_user'))]"/>
-    </record>
-    <record id="demo_user_partner" model="res.partner">
-      <field name="name">Demo User</field>
-      <field name="user_id" ref="demo_user"/>
-    </record>
     <record id="demo_installment_1" model="installment.installment">
-      <field name="reference">demo/ref/1</field>
-      <field name="state">draft</field>
-      <field name="date" eval="datetime.now() - timedelta(days=2)"/>
-      <field name="customer_id" ref="base.res_partner_1"/>
-      <field name="journal_id">1</field>
-      <field name="account_id">42</field>
-      <field name="amount">2000</field>
-      <field name="notes">This is a demo installment</field>
+        <field name="name">Demo Installment 1</field>
+        <field name="reference">REF-001</field>
+        <field name="date">2023-09-01</field>
+        <field name="amount">1000.00</field>
+        <field name="customer_id" ref="base.res_partner_1" />
+        <field name="journal_id">1</field>
+        <field name="account_id">21</field>
     </record>
     <record id="demo_installment_2" model="installment.installment">
-      <field name="name">demo/0002</field>
-      <field name="reference">demo/ref/2</field>
-      <field name="state">open</field>
-      <field name="date" eval="datetime.now() - timedelta(days=6)"/>
-      <field name="customer_id" ref="base.res_partner_12"/>
-      <field name="journal_id">1</field>
-      <field name="account_id">42</field>
-      <field name="amount">5000</field>
-      <field name="notes">This is a demo installment</field>
+        <field name="name">Demo Installment 2</field>
+        <field name="reference">REF-002</field>
+        <field name="date">2023-09-15</field>
+        <field name="amount">1500.00</field>
+        <field name="customer_id" ref="base.res_partner_2" />
+        <field name="journal_id">1</field>
+        <field name="account_id">21</field>
     </record>
     <record id="demo_installment_3" model="installment.installment">
-      <field name="reference">demo/ref/3</field>
-      <field name="state">draft</field>
-      <field name="date" eval="datetime.now() - timedelta(days=3)"/>
-      <field name="customer_id" ref="base.res_partner_1"/>
-      <field name="journal_id">1</field>
-      <field name="account_id">42</field>
-      <field name="amount">3000</field>
-      <field name="notes">This is a demo installment</field>
-      <field name="create_uid" ref="demo_user"/>
+        <field name="name">Demo Installment 2</field>
+        <field name="reference">REF-003</field>
+        <field name="date">2023-10-15</field>
+        <field name="amount">500.00</field>
+        <field name="customer_id" ref="base.res_partner_2" />
+        <field name="journal_id">1</field>
+        <field name="account_id">21</field>
     </record>
     <record id="demo_installment_4" model="installment.installment">
-      <field name="name">demo/0004</field>
-      <field name="reference">demo/ref/4</field>
-      <field name="state">open</field>
-      <field name="date" eval="datetime.now()"/>
-      <field name="customer_id" ref="base.res_partner_1"/>
-      <field name="journal_id">1</field>
-      <field name="account_id">42</field>
-      <field name="amount">4000</field>
-      <field name="notes">This is a demo installment</field>
-      <field name="create_uid" ref="demo_user"/>
+        <field name="name">Demo Installment 2</field>
+        <field name="reference">REF-004</field>
+        <field name="date">2023-10-10</field>
+        <field name="amount">2000.00</field>
+        <field name="customer_id" ref="base.res_partner_1" />
+        <field name="journal_id">1</field>
+        <field name="account_id">21</field>
     </record>
-    <record id="demo_installment_5" model="installment.installment">
-      <field name="name">demo/0005</field>
-      <field name="reference">demo/ref/5</field>
-      <field name="state">paid</field>
-      <field name="date" eval="datetime.now() - timedelta(days=22)"/>
-      <field name="customer_id" ref="base.res_partner_12"/>
-      <field name="journal_id">1</field>
-      <field name="account_id">42</field>
-      <field name="amount">5000</field>
-      <field name="notes">This is a demo installment</field>
-    </record>
-    <record id="demo_payment_1" model="installment.payment">
-      <field name="payment_date" eval="datetime.now() - timedelta(days=10)"/>
-      <field name="installment_id" ref="demo_installment_5"/>
-      <field name="amount">3500</field>
-    </record>
-    <record id="demo_payment_2" model="installment.payment">
-      <field name="payment_date" eval="datetime.now() - timedelta(days=2)"/>
-      <field name="installment_id" ref="demo_installment_5"/>
-      <field name="amount">1500</field>
-    </record>
-    <record id="demo_payment_3" model="installment.payment">
-      <field name="payment_date" eval="datetime.now() - timedelta(days=3)"/>
-      <field name="installment_id" ref="demo_installment_2"/>
-      <field name="amount">2000</field>
-    </record>
-  </data>
 </odoo>
