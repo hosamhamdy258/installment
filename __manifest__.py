@@ -16,8 +16,6 @@
     "data": [
         "security/installment_security.xml",
         "security/ir.model.access.csv",
-        "data/invoice_sequence.xml",
-        "views/payment_wizard.xml",
         "views/installment_form.xml",
         "views/installment_kanban.xml",
         "views/installment_search.xml",

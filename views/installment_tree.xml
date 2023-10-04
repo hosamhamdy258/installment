@@ -4,7 +4,7 @@
         <field name="name">installment.view.tree</field>
         <field name="model">installment.installment</field>
         <field name="arch" type="xml">
-            <tree string="Installment">
+            <tree string="Installment" decoration-warning="state == 'draft'" decoration-info="state == 'open'" decoration-success="state == 'paid'">
                 <field name="name" />
                 <field name="reference" />
                 <field name="state" widget="badge" decoration-warning="state == 'draft'" decoration-info="state == 'open'" decoration-success="state == 'paid'" />
